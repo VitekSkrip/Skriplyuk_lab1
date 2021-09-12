@@ -16,45 +16,71 @@ void Skriplyuk_contclass_hotels::input_hotels_by_console()
 	hotels.push_back(hotel);
 }
 
+
 void Skriplyuk_contclass_hotels::show_hotels()
 {
-	for (int i = 0; i < hotels.size(); ++i)
-		cout << "Название отеля: " << hotels[i].name << endl << "Количество звезд: " << hotels[i].stars << endl << endl;
+	if (hotels.size() > 0)
+	{
+		for (auto i = hotels.begin(); i != hotels.end(); ++i)
+			cout << "Название отеля: " << i->name << endl << "Количество звезд: " << i->stars << endl;
+	}
+	else cout << "Вы не ввели ни одного отеля!" << endl;
 }
 
+void Skriplyuk_contclass_hotels::delete_hotels()
+{
+	if (hotels.size() > 0)
+	{
+		auto begin = hotels.begin();
+		auto end = hotels.end();
+		hotels.erase(begin, end);
+	}
+	else cout << "Вы не ввели ни одного отеля!" << endl;
+	
+}
 
 void Skriplyuk_contclass_hotels::insert_in_file(ofstream& outfile)
 {
 	outfile << hotels.size() << endl;
-	for (int i = 0; i < hotels.size(); ++i)
+	for (auto i=hotels.begin();i!=hotels.end(); ++i)
 	{ 
-		if (i == hotels.size() - 1)
-			outfile << hotels[i].name << endl << hotels[i].stars;
+		if (i == hotels.end() - 1)
+			outfile << i->name << endl << i->stars;
 		else
-			outfile << hotels[i].name << endl << hotels[i].stars << endl;
+			outfile << i->name << endl << i->stars << endl;
 	}
 }
 
 
 void Skriplyuk_contclass_hotels::load_fr_file(ifstream& infile)
 {
-	/*
+	
 	int hotels_count;
 	infile >> hotels_count;
 	hotels.resize(hotels_count);
-	for (int i=0; i < hotels_count; ++i)
+	for (auto i=hotels.begin(); i != hotels.end(); ++i)
 	{
-		infile >> hotels[i].name >> hotels[i].stars;
+		infile >> i->name >> i->stars;
 	}
-	*/
+	
 
-	int i = 0;
-	int hotels_count;
-	infile >> hotels_count;
-	hotels.resize(hotels_count);
-	while (!infile.eof())
-	{
-		infile >> hotels[i].name >> hotels[i].stars;
-		++i;
-	}
+	//int i=0;
+	//int hotels_count;
+	//infile >> hotels_count;
+	//hotels.resize(hotels_count);
+	//while (!infile.eof())
+	//{
+	//infile >> hotels[i].name >> hotels[i].stars;
+	//++i;
+
+
+	//int i = 0;
+	//int hotels_count;
+	//infile >> hotels_count;
+	//hotels.resize(hotels_count);
+	//while (!infile.eof())
+	//{
+	//	infile >> hotels[i].name >> hotels[i].stars;
+	//	++i;
+	//}
 }

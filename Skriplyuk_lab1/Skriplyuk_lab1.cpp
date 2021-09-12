@@ -17,15 +17,16 @@ void menu()
 	cout << "2. Вывести на экран" << endl;
 	cout << "3. Считать из файлового потока" << endl;
 	cout << "4. Вывести в файловый поток" << endl;
-	cout << "5. Выход" << endl;
+	cout << "5. Удалить все отели" << endl;
+	cout << "6. Выход" << endl;
 
 }
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	Skriplyuk_class_hotel hotel;
 	Skriplyuk_contclass_hotels class_hotels;
+	Skriplyuk_class_hotel hotel;
 	while (true)
 	{
 		menu();
@@ -70,6 +71,11 @@ int main()
 			break;
 		}
 		case 5:
+		{
+			class_hotels.delete_hotels();
+			break;
+		}
+		case 6:
 		{
 			return 0;
 		}

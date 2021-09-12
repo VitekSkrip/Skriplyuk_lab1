@@ -14,4 +14,5 @@ public:
 	void show_hotels();
 	void load_fr_file(ifstream& infile);
 	void insert_in_file(ofstream& outfile);
+	void delete_hotels();
 };
