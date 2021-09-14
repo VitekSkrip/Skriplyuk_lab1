@@ -1,5 +1,4 @@
 #include "Skriplyuk_contclass_hotels.h"
-#include "Skriplyuk_class_hotel.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -9,7 +8,7 @@ using namespace std;
 void Skriplyuk_contclass_hotels::input_hotels_by_console()
 {
 	Skriplyuk_class_hotel hotel;
-	hotel.input_hotel_by_console(hotel);
+	hotel.input_hotel_by_console();
 	hotels.push_back(hotel);
 }
 
@@ -18,9 +17,8 @@ void Skriplyuk_contclass_hotels::show_hotels()
 {
 	if (hotels.size() > 0)
 	{
-		Skriplyuk_class_hotel hotel;
-		for (auto i = hotels.begin(); i != hotels.end(); ++i)
-			cout << "Название отеля: " << i->name << endl << "Количество звезд: " << i->stars << endl;
+		for (Skriplyuk_class_hotel& hotel : hotels)
+			hotel.show_hotel();
 	}
 	else cout << "Вы не ввели ни одного отеля!" << endl;
 }
@@ -38,12 +36,13 @@ void Skriplyuk_contclass_hotels::delete_hotels()
 void Skriplyuk_contclass_hotels::insert_in_file(ofstream& outfile)
 {
 	outfile << hotels.size() << endl;
-	for (auto i=hotels.begin();i!=hotels.end(); ++i)
+	for (Skriplyuk_class_hotel& hotel: hotels)
 	{ 
-		if (i == hotels.end() - 1)
-			outfile << i->name << endl << i->stars;
-		else
-			outfile << i->name << endl << i->stars << endl;
+		hotel.insert_into_file(outfile);
+		//if (i == hotels.end() - 1)
+			//outfile << i->name << endl << i->stars;
+		//else
+			//outfile << i->name << endl << i->stars << endl;
 	}
 }
 
@@ -54,9 +53,9 @@ void Skriplyuk_contclass_hotels::load_fr_file(ifstream& infile)
 	int hotels_count;
 	infile >> hotels_count;
 	hotels.resize(hotels_count);
-	for (auto i=hotels.begin(); i != hotels.end(); ++i)
+	for (Skriplyuk_class_hotel& hotel: hotels)
 	{
-		infile >> i->name >> i->stars;
+		hotel.load_from_file(infile);
 	}
 	
 

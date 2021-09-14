@@ -5,25 +5,25 @@
 using namespace std;
 
 
-void Skriplyuk_class_hotel::input_hotel_by_console(Skriplyuk_class_hotel& hotel)
+void Skriplyuk_class_hotel::input_hotel_by_console()
 {
 	cout << "Введите название отеля: ";
-	cin >> hotel.name;
+	cin >> name;
 	cout << "Введите количество звезд отеля: ";
-	cin >> hotel.stars;
+	cin >> stars;
 }
 
-void Skriplyuk_class_hotel::show_hotel(const Skriplyuk_class_hotel& hotel)
+void Skriplyuk_class_hotel::show_hotel()
 {
-	cout << "Название отеля: " << hotel.name << endl << "Количество звезд: " << hotel.stars << endl;
+	cout << "Название отеля: " << name << endl << "Количество звезд: " << stars << endl;
 }
 
-void Skriplyuk_class_hotel::insert_into_file(ofstream& outfile, const Skriplyuk_class_hotel& hotel)
+void Skriplyuk_class_hotel::insert_into_file(ofstream& outfile)
 {
-	outfile << hotel.name << endl << hotel.stars << endl;
+	outfile << name << endl << stars << endl;
 }
 
-void Skriplyuk_class_hotel::load_from_file(ifstream& infile, Skriplyuk_class_hotel& hotel)
+void Skriplyuk_class_hotel::load_from_file(ifstream& infile)
 {
-	infile >> hotel.name >> hotel.stars;
+	infile >> name >> stars;
 }
