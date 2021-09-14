@@ -9,10 +9,7 @@ using namespace std;
 void Skriplyuk_contclass_hotels::input_hotels_by_console()
 {
 	Skriplyuk_class_hotel hotel;
-	cout << "Введите название отеля: ";
-	cin >> hotel.name;
-	cout << "Введите количество звезд отеля: ";
-	cin >> hotel.stars;
+	hotel.input_hotel_by_console(hotel);
 	hotels.push_back(hotel);
 }
 
@@ -21,6 +18,7 @@ void Skriplyuk_contclass_hotels::show_hotels()
 {
 	if (hotels.size() > 0)
 	{
+		Skriplyuk_class_hotel hotel;
 		for (auto i = hotels.begin(); i != hotels.end(); ++i)
 			cout << "Название отеля: " << i->name << endl << "Количество звезд: " << i->stars << endl;
 	}
@@ -31,12 +29,10 @@ void Skriplyuk_contclass_hotels::delete_hotels()
 {
 	if (hotels.size() > 0)
 	{
-		auto begin = hotels.begin();
-		auto end = hotels.end();
-		hotels.erase(begin, end);
+		hotels.erase(hotels.begin(), hotels.end());
+
 	}
 	else cout << "Вы не ввели ни одного отеля!" << endl;
-	
 }
 
 void Skriplyuk_contclass_hotels::insert_in_file(ofstream& outfile)

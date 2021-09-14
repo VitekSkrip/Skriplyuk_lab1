@@ -25,8 +25,9 @@ void menu()
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	Skriplyuk_contclass_hotels class_hotels;
-	Skriplyuk_class_hotel hotel;
+	//Skriplyuk_class_hotel hotel;
+	Skriplyuk_contclass_hotels* class_hotels;
+	class_hotels = new Skriplyuk_contclass_hotels;
 	while (true)
 	{
 		menu();
@@ -37,12 +38,12 @@ int main()
 		{
 		case 1:
 		{
-			class_hotels.input_hotels_by_console();
+			class_hotels->input_hotels_by_console();
 			break;
 		}
 		case 2:
 		{
-			class_hotels.show_hotels();
+			class_hotels->show_hotels();
 			system("Pause");
 			break;
 		}
@@ -51,7 +52,7 @@ int main()
 			ifstream fromfile("tofile.txt", ios::in);
 			if (fromfile.is_open())
 			{
-				class_hotels.load_fr_file(fromfile);
+				class_hotels->load_fr_file(fromfile);
 				fromfile.close();
 			}
 			else cout << "Файл не удалось открыть" << endl;
@@ -63,7 +64,7 @@ int main()
 			ofstream tofile("tofile.txt", ios::out);
 			if (tofile.is_open())
 			{
-				class_hotels.insert_in_file(tofile);
+				class_hotels->insert_in_file(tofile);
 				tofile.close();
 			}
 			else cout << "Файл не удалось открыть" << endl;
@@ -72,7 +73,8 @@ int main()
 		}
 		case 5:
 		{
-			class_hotels.delete_hotels();
+			class_hotels->delete_hotels();
+			system("pause");
 			break;
 		}
 		case 6:
