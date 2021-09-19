@@ -39,10 +39,6 @@ void Skriplyuk_contclass_hotels::insert_in_file(ofstream& outfile)
 	for (Skriplyuk_class_hotel& hotel: hotels)
 	{ 
 		hotel.insert_into_file(outfile);
-		//if (i == hotels.end() - 1)
-			//outfile << i->name << endl << i->stars;
-		//else
-			//outfile << i->name << endl << i->stars << endl;
 	}
 }
 
@@ -58,24 +54,4 @@ void Skriplyuk_contclass_hotels::load_fr_file(ifstream& infile)
 		hotel.load_from_file(infile);
 	}
 	
-
-	//int i=0;
-	//int hotels_count;
-	//infile >> hotels_count;
-	//hotels.resize(hotels_count);
-	//while (!infile.eof())
-	//{
-	//infile >> hotels[i].name >> hotels[i].stars;
-	//++i;
-
-
-	//int i = 0;
-	//int hotels_count;
-	//infile >> hotels_count;
-	//hotels.resize(hotels_count);
-	//while (!infile.eof())
-	//{
-	//	infile >> hotels[i].name >> hotels[i].stars;
-	//	++i;
-	//}
 }

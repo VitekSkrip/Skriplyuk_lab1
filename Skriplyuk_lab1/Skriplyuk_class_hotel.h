@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
+
 class Skriplyuk_class_hotel
 {
 public:

@@ -1,9 +1,9 @@
 #pragma once
-#include <vector>
 #include <iostream>
 #include <fstream>
 #include "Skriplyuk_class_hotel.h"
-using namespace std;
+#include <vector>
+
 
 class Skriplyuk_contclass_hotels
 {

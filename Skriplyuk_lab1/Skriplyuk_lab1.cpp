@@ -2,10 +2,7 @@
 //
 
 #include <iostream>
-#include <string>
 #include <fstream>
-#include "Skriplyuk_class_hotel.h"
-#include <vector>
 #include "Skriplyuk_contclass_hotels.h"
 
 using namespace std;
@@ -25,9 +22,7 @@ void menu()
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	//Skriplyuk_class_hotel hotel;
-	Skriplyuk_contclass_hotels* class_hotels;
-	class_hotels = new Skriplyuk_contclass_hotels;
+	Skriplyuk_contclass_hotels* class_hotels = new Skriplyuk_contclass_hotels;
 	while (true)
 	{
 		menu();
