@@ -8,7 +8,7 @@
 class Skriplyuk_contclass_hotels
 {
 private:
-	std::vector<Skriplyuk_class_hotel> hotels;
+	vector<Skriplyuk_class_hotel*> hotels;
 public:
 	void input_hotels_by_console();
 	void show_hotels();

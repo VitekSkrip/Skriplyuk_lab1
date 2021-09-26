@@ -7,8 +7,8 @@ using namespace std;
 
 void Skriplyuk_contclass_hotels::input_hotels_by_console()
 {
-	Skriplyuk_class_hotel hotel;
-	hotel.input_hotel_by_console();
+	Skriplyuk_class_hotel* hotel = new Skriplyuk_class_hotel;
+	hotel->input_hotel_by_console();
 	hotels.push_back(hotel);
 }
 
@@ -17,8 +17,8 @@ void Skriplyuk_contclass_hotels::show_hotels()
 {
 	if (hotels.size() > 0)
 	{
-		for (Skriplyuk_class_hotel& hotel : hotels)
-			hotel.show_hotel();
+		for (auto iter = hotels.begin(); iter != hotels.end(); iter++)
+			(*iter)->show_hotel();
 	}
 	else cout << "Вы не ввели ни одного отеля!" << endl;
 }
@@ -27,8 +27,9 @@ void Skriplyuk_contclass_hotels::delete_hotels()
 {
 	if (hotels.size() > 0)
 	{
-		hotels.erase(hotels.begin(), hotels.end());
-
+		for (auto iter = hotels.begin(); iter != hotels.end(); iter++)
+			delete* iter;
+		hotels.clear();
 	}
 	else cout << "Вы не ввели ни одного отеля!" << endl;
 }
@@ -36,10 +37,8 @@ void Skriplyuk_contclass_hotels::delete_hotels()
 void Skriplyuk_contclass_hotels::insert_in_file(ofstream& outfile)
 {
 	outfile << hotels.size() << endl;
-	for (Skriplyuk_class_hotel& hotel: hotels)
-	{ 
-		hotel.insert_into_file(outfile);
-	}
+	for (auto iter = hotels.begin(); iter != hotels.end(); iter++)
+		(*iter)->insert_into_file(outfile);
 }
 
 
@@ -48,10 +47,10 @@ void Skriplyuk_contclass_hotels::load_fr_file(ifstream& infile)
 	
 	int hotels_count;
 	infile >> hotels_count;
-	hotels.resize(hotels_count);
-	for (Skriplyuk_class_hotel& hotel: hotels)
+	for (int i=0;i!=hotels_count;i++)
 	{
-		hotel.load_from_file(infile);
+		Skriplyuk_class_hotel* hotel = new Skriplyuk_class_hotel;
+		hotel->load_from_file(infile);
+		hotels.push_back(hotel);
 	}
-	
 }
